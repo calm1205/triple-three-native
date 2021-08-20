@@ -1,12 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Square } from "./src/components/atoms/Square";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello world</Text>
-      <StatusBar style="auto" />
+      <Square number={5} />
     </View>
   );
 }
@@ -14,7 +13,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
   },
