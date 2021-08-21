@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import {
   Adder,
+  Hand,
   Square,
   BasicButton,
   ChangeIcon,
@@ -11,6 +12,7 @@ import {
 export default function App() {
   return (
     <View style={styles.container}>
+      <Hand value={3} />
       <Description />
       <Adder index={1} value={1} onPress={() => alert("adder")} />
       <Square number={5} />
