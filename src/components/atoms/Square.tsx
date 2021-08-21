@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { COLOR } from "../../utils/style";
 
 type BaseSquareProps = {
   number: number;
@@ -18,17 +19,17 @@ const styles = StyleSheet.create({
   container: {
     width: 100,
     height: 100,
-    backgroundColor: "#27292B",
+    backgroundColor: COLOR.BACKGROUND,
     borderWidth: 3,
-    borderColor: "#37383B",
+    borderColor: COLOR.BORDER,
     alignItems: "center",
     justifyContent: "center",
   },
   error: {
-    backgroundColor: "#FA8072",
+    backgroundColor: COLOR.ERROR,
   },
   text: {
     fontSize: 30,
-    color: "white",
+    color: COLOR.TEXT,
   },
 });
