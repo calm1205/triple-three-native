@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Square, BasicButton } from "./src/components/atoms";
+import { Square, BasicButton, ChangeIcon } from "./src/components/atoms";
 
 export default function App() {
   return (
@@ -12,6 +12,7 @@ export default function App() {
         disabled={true}
         onPress={() => alert("press")}
       />
+      <ChangeIcon width={50} height={50} />
     </View>
   );
 }
