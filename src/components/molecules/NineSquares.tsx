@@ -12,9 +12,9 @@ export const NineSquares: React.FC<BaseNineSquaresProps> = ({ values }) => {
     <View style={styles.container}>
       {values.map((rowValues, i) => {
         return (
-          <View style={styles.row}>
+          <View style={styles.row} key={`row_${i}`}>
             {rowValues.map((v, j) => {
-              return <Square value={v} key={`${i}_${j}`} />;
+              return <Square value={v} key={`square_${i}_${j}`} />;
             })}
           </View>
         );

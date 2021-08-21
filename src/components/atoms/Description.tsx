@@ -15,8 +15,12 @@ export const Description: React.FC = () => {
       <View style={styles.hr}></View>
       <Text style={styles.h1}>How To Play</Text>
       <View>
-        {descriptions.map((description) => (
-          <Text style={styles.text} children={description} />
+        {descriptions.map((description, i) => (
+          <Text
+            style={styles.text}
+            children={description}
+            key={`description_${i}`}
+          />
         ))}
       </View>
     </View>
