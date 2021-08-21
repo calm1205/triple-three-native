@@ -4,6 +4,7 @@ import {
   Adder,
   Hand,
   Square,
+  Score,
   BasicButton,
   ChangeIcon,
   Description,
@@ -12,6 +13,7 @@ import {
 export default function App() {
   return (
     <View style={styles.container}>
+      <Score label={"best"} value={999} />
       <Hand value={3} />
       <Description />
       <Adder index={1} value={1} onPress={() => alert("adder")} />
