@@ -7,9 +7,8 @@ type BaseSquareProps = {
 };
 
 export const Square: React.FC<BaseSquareProps> = ({ number }) => {
-  const multipleOfThree = number % 3 === 0;
   return (
-    <View style={[styles.container, multipleOfThree && styles.error]}>
+    <View style={[styles.container, number % 3 === 0 && styles.error]}>
       <Text style={styles.text}>{number}</Text>
     </View>
   );
