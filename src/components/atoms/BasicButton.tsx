@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
+    fontWeight: "bold",
     color: COLOR.PRIMARY,
   },
   disable: {

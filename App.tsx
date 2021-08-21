@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Description } from "./src/components/atoms";
-import { NineSquares, Hands } from "./src/components/molecules";
+import { NineSquares, Hands, Scores } from "./src/components/molecules";
 
 const defaultValues = [
   [1, 2, 3],
@@ -12,6 +12,9 @@ const defaultValues = [
 export default function App() {
   return (
     <View style={styles.container}>
+      <View style={styles.mt} />
+      <Scores score={100} bestScore={999} onPress={() => alert("new game")} />
+      <View style={styles.mt} />
       <NineSquares values={defaultValues} />
       <View style={styles.mt} />
       <Hands values={[3, 9]} onPress={() => alert("change")} />
