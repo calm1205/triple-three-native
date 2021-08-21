@@ -1,30 +1,20 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import {
-  Adder,
-  Hand,
-  Square,
-  Score,
-  BasicButton,
-  ChangeIcon,
-  Description,
-} from "./src/components/atoms";
+import { Description } from "./src/components/atoms";
+import { NineSquares } from "./src/components/molecules";
+
+const defaultValues = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Score label={"best"} value={999} />
-      <Hand value={3} />
+      <NineSquares values={defaultValues} />
+      <View style={styles.mt} />
       <Description />
-      <Adder index={1} value={1} onPress={() => alert("adder")} />
-      <Square number={5} />
-      <BasicButton text="sample" onPress={() => alert("press")} />
-      <BasicButton
-        text="disable"
-        disabled={true}
-        onPress={() => alert("press")}
-      />
-      <ChangeIcon width={50} height={50} />
     </View>
   );
 }
@@ -35,5 +25,8 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
+  },
+  mt: {
+    marginTop: 70,
   },
 });

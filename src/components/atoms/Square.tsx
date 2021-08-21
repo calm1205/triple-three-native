@@ -3,13 +3,13 @@ import { StyleSheet, Text, View } from "react-native";
 import { COLOR } from "../../utils/style";
 
 type BaseSquareProps = {
-  number: number;
+  value: number;
 };
 
-export const Square: React.FC<BaseSquareProps> = ({ number }) => {
+export const Square: React.FC<BaseSquareProps> = ({ value }) => {
   return (
-    <View style={[styles.container, number % 3 === 0 && styles.error]}>
-      <Text style={styles.text}>{number}</Text>
+    <View style={[styles.container, value % 3 === 0 && styles.error]}>
+      <Text style={styles.text}>{value}</Text>
     </View>
   );
 };
