@@ -1,6 +1,5 @@
 import React from "react";
 import { COLOR } from "../../utils/style";
-import { StyleSheet, View } from "react-native";
 import Svg, { G, Path } from "react-native-svg";
 
 type ChangeIconType = {

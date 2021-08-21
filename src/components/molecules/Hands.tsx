@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Hand, ChangeIcon } from "../atoms";
 import { COLOR } from "../../utils/style";
 
@@ -11,9 +11,9 @@ type BaseHandsProps = {
 export const Hands: React.FC<BaseHandsProps> = ({ values, onPress }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.change}>
+      <TouchableOpacity style={styles.change} onPress={onPress}>
         <ChangeIcon width={50} height={50} />
-      </View>
+      </TouchableOpacity>
       <View style={styles.main}>
         <Hand value={values[0]} />
       </View>
