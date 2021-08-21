@@ -1,39 +1,50 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Square } from "../atoms";
+import { Hand, ChangeIcon } from "../atoms";
 import { COLOR } from "../../utils/style";
 
-type BaseNineSquaresProps = {
-  values: number[][];
+type BaseHandsProps = {
+  values: [number, number];
+  onPress: () => void;
 };
 
-export const NineSquares: React.FC<BaseNineSquaresProps> = ({ values }) => {
+export const Hands: React.FC<BaseHandsProps> = ({ values, onPress }) => {
   return (
     <View style={styles.container}>
-      {values.map((rowValues, i) => {
-        return (
-          <View style={styles.row}>
-            {rowValues.map((v, j) => {
-              return <Square value={v} key={`${i}_${j}`} />;
-            })}
-          </View>
-        );
-      })}
+      <View style={styles.change}>
+        <ChangeIcon width={50} height={50} />
+      </View>
+      <View style={styles.main}>
+        <Hand value={values[0]} />
+      </View>
+      <View style={styles.sub}>
+        <Hand value={values[1]} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: 300,
-    height: 300,
-    backgroundColor: COLOR.BACKGROUND,
-    borderWidth: 5,
-    borderColor: COLOR.BORDER,
+    width: 200,
+    height: 200,
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
   },
-  row: {
-    flexDirection: "row",
+  change: {
+    position: "absolute",
+    top: 30,
+    right: 30,
+  },
+  main: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+  },
+  sub: {
+    position: "absolute",
+    bottom: 10,
+    right: 10,
   },
 });

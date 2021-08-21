@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Description } from "./src/components/atoms";
-import { NineSquares } from "./src/components/molecules";
+import { NineSquares, Hands } from "./src/components/molecules";
 
 const defaultValues = [
   [1, 2, 3],
@@ -13,6 +13,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <NineSquares values={defaultValues} />
+      <View style={styles.mt} />
+      <Hands values={[3, 9]} onPress={() => alert("change")} />
       <View style={styles.mt} />
       <Description />
     </View>
