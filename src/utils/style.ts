@@ -5,3 +5,7 @@ export const COLOR = {
   TEXT: "white",
   ERROR: "#FA8072",
 } as const;
+
+export const SIZE = {
+  spacing: 10,
+} as const;

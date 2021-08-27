@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Hand, ChangeIcon } from "../atoms";
-import { COLOR } from "../../utils/style";
+import { COLOR, SIZE } from "../../utils/style";
 
 type BaseHandsProps = {
   values: [number, number];
@@ -26,8 +26,8 @@ export const Hands: React.FC<BaseHandsProps> = ({ values, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 200,
-    height: 200,
+    width: SIZE.spacing * 19,
+    height: SIZE.spacing * 19,
     alignItems: "center",
     justifyContent: "center",
     position: "relative",

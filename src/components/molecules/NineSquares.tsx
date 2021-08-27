@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Square } from "../atoms";
-import { COLOR } from "../../utils/style";
+import { COLOR, SIZE } from "../../utils/style";
 
 type BaseNineSquaresProps = {
   values: number[][];
@@ -25,8 +25,8 @@ export const NineSquares: React.FC<BaseNineSquaresProps> = ({ values }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 300,
-    height: 300,
+    width: SIZE.spacing * 24,
+    height: SIZE.spacing * 24,
     backgroundColor: COLOR.BACKGROUND,
     borderWidth: 5,
     borderColor: COLOR.BORDER,

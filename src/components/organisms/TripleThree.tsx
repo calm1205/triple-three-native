@@ -27,6 +27,8 @@ export const TripleThree: React.FC<BaseTripleThreeProps> = ({
 
   return (
     <View style={styles.container}>
+      <View>{column_adders}</View>
+      <View>{row_adders}</View>
       <View>
         <NineSquares values={squares} />
       </View>

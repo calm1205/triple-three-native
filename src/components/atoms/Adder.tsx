@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { COLOR } from "../../utils/style";
+import { COLOR, SIZE } from "../../utils/style";
 
 type BaseAdderProps = {
   index: number;
@@ -22,8 +22,8 @@ export const Adder: React.FC<BaseAdderProps> = ({ index, value, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 100,
-    height: 100,
+    width: SIZE.spacing * 8,
+    height: SIZE.spacing * 8,
     backgroundColor: COLOR.BACKGROUND,
     borderWidth: 3,
     borderColor: COLOR.BORDER,

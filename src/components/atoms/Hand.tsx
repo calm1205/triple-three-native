@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { COLOR } from "../../utils/style";
+import { COLOR, SIZE } from "../../utils/style";
 
 type BaseHandProps = {
   value: number;
@@ -16,8 +16,8 @@ export const Hand: React.FC<BaseHandProps> = ({ value }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 80,
-    height: 80,
+    width: SIZE.spacing * 8,
+    height: SIZE.spacing * 8,
     backgroundColor: COLOR.BACKGROUND,
     borderWidth: 3,
     borderColor: COLOR.BORDER,
