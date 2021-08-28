@@ -6,6 +6,8 @@ export const COLOR = {
   ERROR: "#FA8072",
 } as const;
 
+const border = 3;
 export const SIZE = {
-  spacing: 10,
+  border,
+  boldBorder: border * 3,
 } as const;

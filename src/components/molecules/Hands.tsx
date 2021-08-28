@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Hand, ChangeIcon } from "../atoms";
-import { COLOR, SIZE } from "../../utils/style";
+import { useStandardSize } from "../../hooks";
 
 type BaseHandsProps = {
   values: [number, number];
@@ -9,42 +9,28 @@ type BaseHandsProps = {
 };
 
 export const Hands: React.FC<BaseHandsProps> = ({ values, onPress }) => {
+  const size = useStandardSize();
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.change} onPress={onPress}>
-        <ChangeIcon width={50} height={50} />
-      </TouchableOpacity>
-      <View style={styles.main}>
-        <Hand value={values[0]} />
+    <View style={{ width: size * 9, height: size * 9 }}>
+      <View style={{ flex: 1, flexDirection: "row" }}>
+        <View style={{ flex: 1 }}>
+          <Hand value={values[0]} />
+        </View>
+        <TouchableOpacity
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          onPress={onPress}
+        >
+          <ChangeIcon width={size * 2} height={size * 2} />
+        </TouchableOpacity>
       </View>
-      <View style={styles.sub}>
-        <Hand value={values[1]} />
+      <View style={{ flex: 1, flexDirection: "row" }}>
+        <View style={{ flex: 1 }} />
+        <View style={{ flex: 1, paddingLeft: 10 }}>
+          <Hand value={values[1]} width={size * 3} height={size * 3} />
+        </View>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    width: SIZE.spacing * 19,
-    height: SIZE.spacing * 19,
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
-  },
-  change: {
-    position: "absolute",
-    top: 30,
-    right: 30,
-  },
-  main: {
-    position: "absolute",
-    top: 10,
-    left: 10,
-  },
-  sub: {
-    position: "absolute",
-    bottom: 10,
-    right: 10,
-  },
-});
+const styles = StyleSheet.create({});

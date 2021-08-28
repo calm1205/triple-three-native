@@ -16,7 +16,7 @@ export const ChangeIcon: React.FC<ChangeIconType> = (
       width={props.width}
       height={props.height}
       viewBox="0 0 512 512"
-      fill={props.color || COLOR.BORDER}
+      fill={props.color || "grey"}
     >
       <G>
         <Path

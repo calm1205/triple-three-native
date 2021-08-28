@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
 import { NineSquares, Hands } from "../molecules";
-import { useSplitAdders } from "../../hooks/useSplitAdders";
-import { COLOR } from "../../utils/style";
+import { useSplitAdders, useStandardSize } from "../../hooks";
+import { COLOR, SIZE } from "../../utils/style";
+import { BasicButton } from "../atoms";
 
 type BaseTripleThreeProps = {
   adders: number[];
@@ -14,6 +15,7 @@ type BaseTripleThreeProps = {
   onPressAddButton: () => void;
 };
 
+const paddingSpacing = 20;
 export const TripleThree: React.FC<BaseTripleThreeProps> = ({
   adders,
   squares,
@@ -24,21 +26,75 @@ export const TripleThree: React.FC<BaseTripleThreeProps> = ({
   onPressAddButton,
 }) => {
   const { row_adders, column_adders } = useSplitAdders(adders, onPressAdder);
-
+  const width = useStandardSize() * 14;
   return (
-    <View style={styles.container}>
-      <View>{column_adders}</View>
-      <View>{row_adders}</View>
-      <View>
-        <NineSquares values={squares} />
+    <View style={{ flex: 1 }}>
+      <View style={[{ flex: 2, flexDirection: "row" }, styles.top]}>
+        <View style={{ flex: 2 }} />
+        <View style={[{ flex: 6, flexDirection: "row" }, styles.rowAdder]}>
+          {row_adders}
+        </View>
       </View>
-      <View>
-        <Hands values={[3, 9]} onPress={() => alert("change")} />
+
+      <View style={[{ flex: 8, flexDirection: "row" }, styles.main]}>
+        <View
+          style={[
+            {
+              flex: 2,
+              height: width + paddingSpacing * 2 + SIZE.boldBorder * 2,
+            },
+            styles.columnAdder,
+          ]}
+        >
+          {column_adders}
+        </View>
+        <View style={[{ flex: 7 }, styles.nineSquare]}>
+          <NineSquares values={squares} />
+        </View>
+      </View>
+
+      <View style={[{ flex: 5 }, styles.bottom]}>
+        <View style={{ flex: 5, alignItems: "flex-end" }}>
+          <Hands values={[3, 9]} onPress={() => alert("change")} />
+        </View>
+        <View style={{ flex: 2, alignItems: "flex-end", paddingTop: 20 }}>
+          <BasicButton
+            width={100}
+            height={100}
+            text="Add"
+            onPress={onPressAddButton}
+          />
+        </View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  top: {
+    alignItems: "flex-end",
+    // backgroundColor: "skyblue",
+  },
+  rowAdder: {
+    paddingHorizontal: paddingSpacing,
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  columnAdder: {
+    paddingVertical: paddingSpacing,
+    alignItems: "flex-end",
+    justifyContent: "space-around",
+    // backgroundColor: "red",
+  },
+  main: {
+    // backgroundColor: "lavender",
+  },
+  nineSquare: {
+    padding: paddingSpacing,
+  },
+  bottom: {
+    flexDirection: "row",
+    paddingRight: 10,
+    // backgroundColor: "bisque",
+  },
 });

@@ -29,10 +29,8 @@ export const Description: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
-    height: 100,
-    alignItems: "center",
-    justifyContent: "center",
+    flex: 1,
+    paddingVertical: 10,
   },
   hr: {
     width: "100%",
@@ -40,9 +38,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.BORDER,
   },
   h1: {
-    fontSize: 30,
+    fontSize: 20,
     color: COLOR.TEXT,
-    width: "100%",
     marginVertical: 10,
   },
   text: {

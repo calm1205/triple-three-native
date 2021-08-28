@@ -4,18 +4,22 @@ import { COLOR } from "../../utils/style";
 
 type BaseButtonProps = {
   text: string;
+  width?: number;
+  height?: number;
   disabled?: boolean;
   onPress: () => void;
 };
 
 export const BasicButton: React.FC<BaseButtonProps> = ({
   text,
+  width = 100,
+  height = 50,
   disabled = false,
   onPress,
 }) => {
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={[styles.container, { width, height }]}
       onPress={() => disabled || onPress()}
     >
       <Text style={[styles.text, disabled && styles.disable]}>{text}</Text>
@@ -28,7 +32,6 @@ const styles = StyleSheet.create({
     width: 100,
     height: 50,
     backgroundColor: COLOR.BACKGROUND,
-    borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",
   },

@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { COLOR } from "../../utils/style";
+import { useStandardSize } from "../../hooks";
+import { COLOR, SIZE } from "../../utils/style";
 
 type BaseScoreProps = {
   label: string;
@@ -8,8 +9,9 @@ type BaseScoreProps = {
 };
 
 export const Score: React.FC<BaseScoreProps> = ({ label, value }) => {
+  const size = useStandardSize();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width: size * 5, height: size * 5 }]}>
       <Text style={styles.label}>{label}</Text>
       <Text style={styles.text}>{value}</Text>
     </View>
@@ -18,10 +20,8 @@ export const Score: React.FC<BaseScoreProps> = ({ label, value }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 100,
-    height: 100,
     backgroundColor: COLOR.BACKGROUND,
-    borderWidth: 3,
+    borderWidth: SIZE.border,
     borderColor: COLOR.BORDER,
     alignItems: "center",
     justifyContent: "center",

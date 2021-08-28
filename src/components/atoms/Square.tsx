@@ -4,11 +4,12 @@ import { COLOR, SIZE } from "../../utils/style";
 
 type BaseSquareProps = {
   value: number;
+  flex: number;
 };
 
-export const Square: React.FC<BaseSquareProps> = ({ value }) => {
+export const Square: React.FC<BaseSquareProps> = ({ value, flex }) => {
   return (
-    <View style={[styles.container, value % 3 === 0 && styles.error]}>
+    <View style={[{ flex }, styles.container, value % 3 === 0 && styles.error]}>
       <Text style={styles.text}>{value}</Text>
     </View>
   );
@@ -16,8 +17,6 @@ export const Square: React.FC<BaseSquareProps> = ({ value }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: SIZE.spacing * 8,
-    height: SIZE.spacing * 8,
     backgroundColor: COLOR.BACKGROUND,
     borderWidth: 3,
     borderColor: COLOR.BORDER,
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.ERROR,
   },
   text: {
-    fontSize: 30,
+    fontSize: 25,
     color: COLOR.TEXT,
   },
 });

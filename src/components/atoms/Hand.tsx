@@ -4,11 +4,17 @@ import { COLOR, SIZE } from "../../utils/style";
 
 type BaseHandProps = {
   value: number;
+  width?: number;
+  height?: number;
 };
 
-export const Hand: React.FC<BaseHandProps> = ({ value }) => {
+export const Hand: React.FC<BaseHandProps> = ({
+  value,
+  width = 80,
+  height = 80,
+}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width, height }]}>
       <Text style={styles.text}>+{value}</Text>
     </View>
   );
@@ -16,16 +22,14 @@ export const Hand: React.FC<BaseHandProps> = ({ value }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: SIZE.spacing * 8,
-    height: SIZE.spacing * 8,
     backgroundColor: COLOR.BACKGROUND,
-    borderWidth: 3,
+    borderWidth: SIZE.border * 2,
     borderColor: COLOR.BORDER,
     alignItems: "center",
     justifyContent: "center",
   },
   text: {
-    fontSize: 30,
+    fontSize: 25,
     color: COLOR.TEXT,
   },
 });
