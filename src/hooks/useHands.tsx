@@ -6,11 +6,11 @@ import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
 type AdderType = BaseTripleThreeProps["adders"];
 type HandsType = BaseTripleThreeProps["hands"];
 type SetAddersType = React.Dispatch<React.SetStateAction<AdderType>>;
-const localStorageHans = JSON.parse(localStorage.getItem("hands")!);
+const AsyncStorageHans = JSON.parse(AsyncStorage.getItem("hands")!);
 
 export const useHands = (adders: AdderType, setAdders: SetAddersType) => {
   const [hands, setHands] = useState<HandsType>(
-    localStorageHans || [useRandomNumber(), useRandomNumber()]
+    AsyncStorageHans || [useRandomNumber(), useRandomNumber()]
   );
 
   const onChangeHands = () => {

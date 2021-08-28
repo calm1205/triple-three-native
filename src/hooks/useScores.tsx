@@ -3,7 +3,7 @@ import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
 
 // Scoreを扱うロジック
 type SquaresType = BaseTripleThreeProps["squares"];
-const localStorageBestScore = Number(localStorage.getItem("best"));
+const AsyncStorageBestScore = Number(AsyncStorage.getItem("best"));
 
 const getScore = (squares: SquaresType) => {
   let score = 0;
@@ -17,7 +17,7 @@ const getScore = (squares: SquaresType) => {
 const updateBestScore = (squares: SquaresType, best: number) => {
   const score = getScore(squares);
   if (score > best) {
-    localStorage.setItem("bestScore", JSON.stringify(score));
+    AsyncStorage.setItem("bestScore", JSON.stringify(score));
   }
 };
 
@@ -28,6 +28,6 @@ export const useScores = (squares: SquaresType) => {
   }, [squares]);
 
   const bestScore =
-    localStorageBestScore > score ? localStorageBestScore : score;
+    AsyncStorageBestScore > score ? AsyncStorageBestScore : score;
   return { score, bestScore, getScore, updateBestScore };
 };

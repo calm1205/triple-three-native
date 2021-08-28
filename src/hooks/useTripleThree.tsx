@@ -1,5 +1,6 @@
 // TripleThreeのロジック
 import React, { useState } from "react";
+import { AsyncStorage } from "react-native";
 import { useHands, useRandomNumber, useScores, useGameOver } from "./";
 import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
 
@@ -12,10 +13,10 @@ export const useTripleThree = () => {
   const initialSquares: SquaresType = [...Array(3)].map(() =>
     [...Array(3)].map(() => useRandomNumber())
   );
-  const localStorageSquares = JSON.parse(localStorage.getItem("squares")!);
-  // 存在すればlocalStorageで初期化
+  const AsyncStorageSquares = JSON.parse(AsyncStorage.getItem("squares")!);
+  // 存在すればAsyncStorageで初期化
   const [squares, setSquares] = useState<SquaresType>(
-    localStorageSquares || initialSquares
+    AsyncStorageSquares || initialSquares
   );
 
   // === Addersの初期化 ===
@@ -62,8 +63,8 @@ export const useTripleThree = () => {
       updateBestScore(newSquares, bestScore);
       setSquares(newSquares);
       const newHands = drawNewHand();
-      localStorage.setItem("squares", JSON.stringify(newSquares));
-      localStorage.setItem("hands", JSON.stringify(newHands));
+      AsyncStorage.setItem("squares", JSON.stringify(newSquares));
+      AsyncStorage.setItem("hands", JSON.stringify(newHands));
       setGameOver(isGameOver(newSquares));
     } else {
       alert("HandをAdderにセットしてください。");
@@ -71,8 +72,8 @@ export const useTripleThree = () => {
   };
 
   const onClickNewGame = () => {
-    localStorage.removeItem("squares");
-    localStorage.removeItem("hands");
+    AsyncStorage.removeItem("squares");
+    AsyncStorage.removeItem("hands");
     setAdders([0, 0, 0, 0, 0, 0]);
     setSquares(initialSquares);
     setHands([useRandomNumber(), useRandomNumber()]);
