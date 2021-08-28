@@ -1,11 +1,11 @@
 import React from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NineSquares, Hands } from "../molecules";
 import { useSplitAdders, useStandardSize } from "../../hooks";
-import { COLOR, SIZE } from "../../utils/style";
+import { SIZE } from "../../utils/style";
 import { BasicButton } from "../atoms";
 
-type BaseTripleThreeProps = {
+export type BaseTripleThreeProps = {
   adders: number[];
   squares: number[][];
   hands: [number, number];

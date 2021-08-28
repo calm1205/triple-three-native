@@ -3,12 +3,28 @@ import { StyleSheet, View, Text, ScrollView, Dimensions } from "react-native";
 import { Description } from "./src/components/atoms";
 import { Scores } from "./src/components/molecules";
 import { TripleThree } from "./src/components/organisms/TripleThree";
+import { GameOverModal } from "./src/components/organisms/GameOverModal";
 import { COLOR } from "./src/utils/style";
+import { useTripleThree } from "./src/hooks";
 
 export default function App() {
   const { width, height } = Dimensions.get("window");
+  // const {
+  //   score,
+  //   bestScore,
+  //   gameOver,
+  //   adders,
+  //   hands,
+  //   squares,
+  //   setGameOver,
+  //   onClickNewGame,
+  //   onClickAdder,
+  //   onChangeHands,
+  //   onClickAddButton,
+  // } = useTripleThree();
   return (
     <ScrollView style={[styles.container]} showsVerticalScrollIndicator={false}>
+      <GameOverModal />
       <View style={{ height }}>
         <View style={styles.top}>
           <View

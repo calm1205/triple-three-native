@@ -1,9 +1,8 @@
 import { useMemo } from "react";
-// import { BaseTripleThreeProps } from "~/components/organisms/TripleThree";
+import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
 
 // Scoreを扱うロジック
-// type SquaresType = BaseTripleThreeProps["squares"];
-type SquaresType = number[][];
+type SquaresType = BaseTripleThreeProps["squares"];
 const localStorageBestScore = Number(localStorage.getItem("best"));
 
 const getScore = (squares: SquaresType) => {
