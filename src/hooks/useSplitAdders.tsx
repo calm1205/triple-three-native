@@ -2,7 +2,10 @@
 import React from "react";
 import { Adder } from "../components/atoms";
 
-export const useSplitAdders = (adders: number[], onPress: () => void) => {
+export const useSplitAdders = (
+  adders: number[],
+  onPress: (index: number) => void
+) => {
   const row_adders: JSX.Element[] = [];
   const column_adders: JSX.Element[] = [];
 
@@ -10,8 +13,8 @@ export const useSplitAdders = (adders: number[], onPress: () => void) => {
     const adderElement = (
       <Adder
         value={adder}
-        onPress={onPress}
         index={index}
+        onPress={onPress}
         key={`adder_${index}`}
       />
     );

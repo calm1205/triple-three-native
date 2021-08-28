@@ -13,6 +13,11 @@ export const useTripleThree = () => {
   const initialSquares: SquaresType = [...Array(3)].map(() =>
     [...Array(3)].map(() => useRandomNumber())
   );
+
+  // const getAsyncStorage = async (key: string) => {
+  //   const value = await AsyncStorage.getItem(key);
+  //   return value;
+  // };
   //   const AsyncStorageSquares = AsyncStorage.getItem("squares");
   const AsyncStorageSquares = null;
   // 存在すればAsyncStorageで初期化
@@ -35,9 +40,8 @@ export const useTripleThree = () => {
   // === GameOverの初期化 ===
   const { gameOver, setGameOver, isGameOver } = useGameOver(squares);
 
-  const onClickAdder = (event: React.MouseEvent) => {
-    const adderElement = event.target as HTMLDivElement;
-    const adderIndex = Number(adderElement.getAttribute("data-index"));
+  const onPressAdder = (index: number) => {
+    const adderIndex = index;
     const adderArray = [0, 0, 0, 0, 0, 0];
     adderArray[adderIndex] = hands[0];
     setAdders(adderArray);
@@ -56,7 +60,7 @@ export const useTripleThree = () => {
     return newSquares;
   };
 
-  const onClickAddButton = () => {
+  const onPressAddButton = () => {
     const [adderIndex] = adders.flatMap((v, i) => (v !== 0 ? i : []));
     if (adderIndex !== undefined) {
       setAdders([0, 0, 0, 0, 0, 0]);
@@ -72,7 +76,7 @@ export const useTripleThree = () => {
     }
   };
 
-  const onClickNewGame = () => {
+  const onPressNewGame = () => {
     AsyncStorage.removeItem("squares");
     AsyncStorage.removeItem("hands");
     setAdders([0, 0, 0, 0, 0, 0]);
@@ -89,9 +93,9 @@ export const useTripleThree = () => {
     hands,
     squares,
     setGameOver,
-    onClickNewGame,
-    onClickAdder,
+    onPressNewGame,
+    onPressAdder,
     onChangeHands,
-    onClickAddButton,
+    onPressAddButton,
   };
 };

@@ -10,11 +10,15 @@ type BaseScoresProps = {
   onPress: () => void;
 };
 
-export const Scores: React.FC<BaseScoresProps> = ({ score, bestScore }) => {
+export const Scores: React.FC<BaseScoresProps> = ({
+  score,
+  bestScore,
+  onPress,
+}) => {
   const size = useStandardSize();
   return (
-    <View style={styles.container}>
-      <View style={styles.score}>
+    <View>
+      <View style={{ flexDirection: "row" }}>
         <Score label={"SCORE"} value={score} />
         <View style={{ width: size }} />
         <Score label={"BEST"} value={bestScore} />
@@ -24,16 +28,11 @@ export const Scores: React.FC<BaseScoresProps> = ({ score, bestScore }) => {
           height={30}
           width={size * 11}
           text={"NEW GAME"}
-          onPress={() => alert("new game")}
+          onPress={onPress}
         />
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
-  score: {
-    flexDirection: "row",
-  },
-});
+const styles = StyleSheet.create({});

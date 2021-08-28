@@ -3,7 +3,6 @@ import { useState } from "react";
 import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
 
 type SquaresType = BaseTripleThreeProps["squares"];
-
 const isGameOver = (squares: SquaresType) => {
   let counter = 0;
   const squaresArray = squares.flatMap((_) => _);
