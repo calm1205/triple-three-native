@@ -4,7 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Scoreを扱うロジック
 type SquaresType = BaseTripleThreeProps["squares"];
-const AsyncStorageBestScore = Number(AsyncStorage.getItem("best"));
 
 const getScore = (squares: SquaresType) => {
   let score = 0;
@@ -28,7 +27,11 @@ export const useScores = (squares: SquaresType) => {
     return number;
   }, [squares]);
 
-  const bestScore =
-    AsyncStorageBestScore > score ? AsyncStorageBestScore : score;
+  let asyncStorageBest = 0;
+  async () => {
+    const value = await AsyncStorage.getItem("best");
+    if (value !== null) asyncStorageBest = Number(value);
+  };
+  const bestScore = asyncStorageBest > score ? asyncStorageBest : score;
   return { score, bestScore, getScore, updateBestScore };
 };

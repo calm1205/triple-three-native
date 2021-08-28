@@ -4,41 +4,32 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
 import { useRandomNumber, useHands, useScores, useGameOver } from "./";
 
-// Type
 type SquaresType = BaseTripleThreeProps["squares"];
 
 export const useTripleThree = () => {
-  // === Squaresの初期化 ===
   // ランダムな二次元配列を生成
   const initialSquares: SquaresType = [...Array(3)].map(() =>
     [...Array(3)].map(() => useRandomNumber())
   );
 
-  // const getAsyncStorage = async (key: string) => {
-  //   const value = await AsyncStorage.getItem(key);
-  //   return value;
-  // };
-  //   const AsyncStorageSquares = AsyncStorage.getItem("squares");
-  const AsyncStorageSquares = null;
-  // 存在すればAsyncStorageで初期化
-  const [squares, setSquares] = useState<SquaresType>(
-    AsyncStorageSquares || initialSquares
-  );
+  const getAsyncStorage = async (key: string, callback: any) => {
+    const value = await AsyncStorage.getItem(key);
+    if (value !== null) {
+      const jsonValue = JSON.parse(value);
+      callback(jsonValue);
+    }
+  };
+  // const AsyncStorageSquares = AsyncStorage.getItem("squares");
+  const [squares, setSquares] = useState<SquaresType>(initialSquares);
+  getAsyncStorage("squares", setSquares);
 
-  // === Addersの初期化 ===
   const [adders, setAdders] = useState<number[]>([0, 0, 0, 0, 0, 0]);
-
-  // === Handsの初期化 ===
+  const { score, bestScore, updateBestScore } = useScores(squares);
+  const { gameOver, setGameOver, isGameOver } = useGameOver(squares);
   const { hands, setHands, onChangeHands, drawNewHand } = useHands(
     adders,
     setAdders
   );
-
-  // === Scoresの初期化 ===
-  const { score, bestScore, updateBestScore } = useScores(squares);
-
-  // === GameOverの初期化 ===
-  const { gameOver, setGameOver, isGameOver } = useGameOver(squares);
 
   const onPressAdder = (index: number) => {
     const adderIndex = index;
@@ -76,9 +67,9 @@ export const useTripleThree = () => {
     }
   };
 
-  const onPressNewGame = () => {
-    AsyncStorage.removeItem("squares");
-    AsyncStorage.removeItem("hands");
+  const onPressNewGame = async () => {
+    await AsyncStorage.removeItem("squares");
+    await AsyncStorage.removeItem("hands");
     setAdders([0, 0, 0, 0, 0, 0]);
     setSquares(initialSquares);
     setHands([useRandomNumber(), useRandomNumber()]);
@@ -92,7 +83,6 @@ export const useTripleThree = () => {
     adders,
     hands,
     squares,
-    setGameOver,
     onPressNewGame,
     onPressAdder,
     onChangeHands,

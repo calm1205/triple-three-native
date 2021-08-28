@@ -16,7 +16,6 @@ export default function App() {
     adders,
     hands,
     squares,
-    setGameOver,
     onPressNewGame,
     onPressAdder,
     onChangeHands,
