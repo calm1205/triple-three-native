@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Scoreを扱うロジック
 type SquaresType = BaseTripleThreeProps["squares"];

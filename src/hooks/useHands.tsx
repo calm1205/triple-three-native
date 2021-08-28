@@ -1,12 +1,14 @@
 // Handsを扱うロジック
 import { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRandomNumber } from "./";
 import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
 
 type AdderType = BaseTripleThreeProps["adders"];
 type HandsType = BaseTripleThreeProps["hands"];
 type SetAddersType = React.Dispatch<React.SetStateAction<AdderType>>;
-const AsyncStorageHans = JSON.parse(AsyncStorage.getItem("hands")!);
+// const AsyncStorageHans = JSON.parse(AsyncStorage.getItem("hands")!);
+const AsyncStorageHans = null;
 
 export const useHands = (adders: AdderType, setAdders: SetAddersType) => {
   const [hands, setHands] = useState<HandsType>(

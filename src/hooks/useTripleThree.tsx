@@ -1,8 +1,8 @@
 // TripleThreeのロジック
 import React, { useState } from "react";
-import { AsyncStorage } from "react-native";
-import { useHands, useRandomNumber, useScores, useGameOver } from "./";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BaseTripleThreeProps } from "../components/organisms/TripleThree";
+import { useRandomNumber, useHands, useScores, useGameOver } from "./";
 
 // Type
 type SquaresType = BaseTripleThreeProps["squares"];
@@ -13,7 +13,8 @@ export const useTripleThree = () => {
   const initialSquares: SquaresType = [...Array(3)].map(() =>
     [...Array(3)].map(() => useRandomNumber())
   );
-  const AsyncStorageSquares = JSON.parse(AsyncStorage.getItem("squares")!);
+  //   const AsyncStorageSquares = AsyncStorage.getItem("squares");
+  const AsyncStorageSquares = null;
   // 存在すればAsyncStorageで初期化
   const [squares, setSquares] = useState<SquaresType>(
     AsyncStorageSquares || initialSquares

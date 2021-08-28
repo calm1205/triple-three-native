@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, Modal, Text, View, Image } from "react-native";
 import { COLOR } from "../../utils/style";
 import { BasicButton } from "../atoms";
-import { BlurView } from "expo-blur";
 
 type BaseGameOverModalProps = {
   score?: number;
@@ -25,14 +24,11 @@ export const GameOverModal: React.FC<BaseGameOverModalProps> = ({
         visible={true}
         transparent={true}
       >
-        <BlurView
-          style={{
-            width: "100%",
-            height: "100%",
-            backgroundColor: "grey",
-            opacity: 0.8,
-          }}
-        ></BlurView>
+        {/* <BlurView
+          intensity={90}
+          tint={"dark"}
+          style={{ width: "100%", height: "100%" }}
+        /> */}
         <View
           style={{
             width: "100%",
